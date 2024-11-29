@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "ip-prefix-search"
+version = "0.1.0"
+description = ""
+authors = ["Rohit Gupta <rohitgtech+git@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+fastapi = "^0.115.5"
+uvicorn = "^0.32.1"
+pydantic = "^2.10.2"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.3"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
