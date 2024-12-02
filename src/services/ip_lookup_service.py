@@ -1,10 +1,10 @@
 from typing import List
 from src.domain.models import IPLookupResult, IPLookupResponse
-from src.infrastructure.prefix_store import PrefixStore
+from src.infrastructure.prefix_store import AbstractPrefixStore
 
 
 class IPLookupService:
-    def __init__(self, prefix_store: PrefixStore):
+    def __init__(self, prefix_store: AbstractPrefixStore):
         self.prefix_store = prefix_store
 
     def lookup_single_ip(self, ip: str) -> IPLookupResponse:

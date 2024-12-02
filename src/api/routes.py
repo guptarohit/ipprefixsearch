@@ -2,7 +2,9 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import List
 from src.domain.models import IPLookupResponse
 from src.services.ip_lookup_service import IPLookupService
-from src.infrastructure.prefix_store import PrefixStore
+from src.infrastructure.prefix_store_factory import PrefixStoreFactory
+
+from src.infrastructure.radix_prefix_store import RadixTreePrefixStore
 from pathlib import Path
 
 router = APIRouter(prefix="/ips")
@@ -11,7 +13,11 @@ router = APIRouter(prefix="/ips")
 project_root = Path(__file__).parent.parent.parent
 json_path = project_root / "prefixes.json"
 
-prefix_store = PrefixStore.from_json(json_path)
+# Create prefix store using the factory
+prefix_store = PrefixStoreFactory.create_from_json(
+    store_class=RadixTreePrefixStore,
+    json_path=json_path,
+)
 ip_service = IPLookupService(prefix_store)
 
 

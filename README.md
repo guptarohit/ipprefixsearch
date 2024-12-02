@@ -15,6 +15,7 @@ REST APIs provided to:
 - Fast lookup performance (~50ms for single IP, ~300ms for batch of 10)
 - Multiple subnet matches per IP address
 - In-memory prefix storage for optimal performance
+- Radix tree based prefix lookup which is ~100x faster than linear search
 
 ## Setup
 
