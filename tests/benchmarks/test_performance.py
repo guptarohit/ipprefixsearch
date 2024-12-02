@@ -4,12 +4,14 @@ from src.infrastructure.prefix_store import PrefixStore
 from src.services.ip_lookup_service import IPLookupService
 from pathlib import Path
 
+# Get the project root directory
+project_root = Path(__file__).parent.parent.parent
+json_path = project_root / "prefixes.json"
+
 
 @pytest.fixture
 def ip_service():
-    prefix_store = PrefixStore.from_json(
-        Path("/Users/rohitgupta/Downloads/ip_prefix_search/prefixes.json")
-    )
+    prefix_store = PrefixStore.from_json(json_path)
     return IPLookupService(prefix_store)
 
 

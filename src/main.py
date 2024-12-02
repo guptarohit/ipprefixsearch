@@ -8,6 +8,3 @@ app = FastAPI(
 )
 
 app.include_router(router, prefix="/api/v1")
-
-# Make sure this is at the module level
-__all__ = ["app"]
