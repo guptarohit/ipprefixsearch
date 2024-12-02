@@ -18,9 +18,9 @@ def ip_service():
 def test_single_ip_lookup_performance(ip_service):
     ip = "184.51.33.230"
 
-    start_time = time.time()
+    start_time = time.perf_counter()
     ip_service.lookup_single_ip(ip)
-    elapsed_time = (time.time() - start_time) * 1000  # Convert to milliseconds
+    elapsed_time = (time.perf_counter() - start_time) * 1000  # Convert to milliseconds
 
     assert (
         elapsed_time < 50
@@ -41,9 +41,9 @@ def test_batch_ip_lookup_performance(ip_service):
         "184.51.33.239",
     ]
 
-    start_time = time.time()
+    start_time = time.perf_counter()
     ip_service.lookup_multiple_ips(ips)
-    elapsed_time = (time.time() - start_time) * 1000  # Convert to milliseconds
+    elapsed_time = (time.perf_counter() - start_time) * 1000  # Convert to milliseconds
 
     assert (
         elapsed_time < 300
