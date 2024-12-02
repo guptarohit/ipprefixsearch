@@ -5,6 +5,7 @@ A high-performance service for looking up cloud provider information based on IP
 ## Overview
 
 REST APIs provided to:
+
 - Look up provider information for a single IP address
 - Batch lookup for multiple IP addresses
 
@@ -24,28 +25,34 @@ REST APIs provided to:
 
 ### Installation
 
-| Step                                                                     | Command                         |
-| ------------------------------------------------------------------------ | ------------------------------- |
-| 1. Create a virtual environment                                          | `python3.11 -m venv .venv`      |
-| 2. Activate the virtual environment                                      | `source .venv/bin/activate`     |
-| 3. Upgrade pip and setuptools                                            | `pip install -U pip setuptools` |
+| Step                                                                      | Command                         |
+| ------------------------------------------------------------------------- | ------------------------------- |
+| 1. Create a virtual environment                                           | `python3.11 -m venv .venv`      |
+| 2. Activate the virtual environment                                       | `source .venv/bin/activate`     |
+| 3. Upgrade pip and setuptools                                             | `pip install -U pip setuptools` |
 | 4. Install [poetry](https://python-poetry.org/) for dependency management | `pip install poetry`            |
-| 5. Install dependencies   | `poetry install`                |
+| 5. Install dependencies                                                   | `poetry install`                |
 
 ### Start the service
-```bash
-uvicorn src.main:app --reload
-```
 
+```bash
+poetry run uvicorn src.main:app --reload
+```
 
 ## API Usage
 
+### API Documentation
+
+Once the server is running, Swagger UI documentation can be accessed from http://localhost:8000/docs
+
 ### Single IP Lookup
+
 ```bash
 GET /api/v1/ips/199.83.128.1
 ```
 
 ### Multiple IP Lookup
+
 ```bash
 GET /api/v1/ips?ips=192.168.1.100&ips=172.16.1.1
 ```
